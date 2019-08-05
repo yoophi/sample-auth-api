@@ -1,5 +1,5 @@
-from app.core.request_objects.user import UserAuthenticateRequestObject
-from app.core.use_cases import UserAuthenticateUseCase
+from app.core.request_objects.user_auth_request_object import UserAuthRequestObject
+from app.core.use_cases.user_authentication_use_case import UserAuthenticateUseCase
 
 
 class UserAdaptor:
@@ -7,6 +7,6 @@ class UserAdaptor:
         self.use_case = UserAuthenticateUseCase(repo)
 
     def authenticate(self, email, password):
-        request = UserAuthenticateRequestObject(email=email, password=password)
+        request = UserAuthRequestObject(email=email, password=password)
         response = self.use_case.execute(request)
         return response.value

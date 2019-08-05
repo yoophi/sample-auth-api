@@ -1,5 +1,5 @@
 from app.core.base.repository import BaseRepository
-from app.core.domain import User
+from app.core.domain.user import User
 
 
 class MemRepo(BaseRepository):
@@ -8,7 +8,7 @@ class MemRepo(BaseRepository):
 
     def authenticate(self, email, password):
         for d in self._data:
-            if d['email'] == email and d['password'] == password:
+            if d["email"] == email and d["password"] == password:
                 return User.from_dict(d)
 
         return None

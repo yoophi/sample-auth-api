@@ -3,7 +3,7 @@ from unittest import mock
 
 from flask import url_for
 
-from app.core.domain import User
+from app.core.domain.user import User
 
 domain_user = User.from_dict({"id": 1, "email": "test@gmail.com", "password": "secret"})
 

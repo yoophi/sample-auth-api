@@ -1,7 +1,7 @@
 from app.core.request_objects import InvalidRequestObject, ValidRequestObject
 
 
-class UserAuthenticateRequestObject(ValidRequestObject):
+class UserAuthRequestObject(ValidRequestObject):
     def __init__(self, email, password):
         self.email = email
         self.password = password
