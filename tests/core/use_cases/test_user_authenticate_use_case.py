@@ -2,9 +2,9 @@ from unittest import mock
 
 import pytest
 
-from app.core.domain import User
-from app.core.request_objects.user import UserAuthenticateRequestObject
-from app.core.use_cases import UserAuthenticateUseCase
+from app.core.domain.user import User
+from app.core.request_objects.user_auth_request_object import UserAuthRequestObject
+from app.core.use_cases.user_authentication_use_case import UserAuthenticateUseCase
 
 USER_ID = 1
 USER_EMAIL = "test@test.com"
@@ -23,7 +23,7 @@ def test_user_authenticate_with_invalid_data(domain_user):
     repo.authenticate.return_value = domain_user
 
     uc = UserAuthenticateUseCase(repo)
-    request = UserAuthenticateRequestObject.from_dict(
+    request = UserAuthRequestObject.from_dict(
         {"email": USER_EMAIL, "password": USER_PASSWORD}
     )
 

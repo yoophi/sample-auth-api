@@ -14,12 +14,12 @@ def init_blueprint(app):
     app.register_blueprint(api_bp, url_prefix="/api")
     app.register_blueprint(auth_bp, url_prefix="/auth")
 
-    if app.config['EXPOSE_SWAGGER_ROUTES']:
+    if app.config["EXPOSE_SWAGGER_ROUTES"]:
         app.register_blueprint(swagger_bp, url_prefix="/swagger")
 
 
 def init_extensions(app):
-    if app.config['REPOSITORY'] == "MYSQL":
+    if app.config["REPOSITORY"] == "MYSQL":
         db.init_app(app)
 
     cors.init_app(app)

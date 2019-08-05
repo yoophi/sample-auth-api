@@ -21,17 +21,7 @@ def spec():
 
     swag["schemes"] = [o.scheme]
     swag["securityDefinitions"] = {
-        "jwt": {
-            "type": "oauth2",
-            "flow": "password",
-            "scopes": {
-                "profile": "default",
-            },
-            "tokenUrl": url_for('auth.access_token', _external=True),
-            # "name": "USER-ID",
-            "in": "header",
-            # "description": "HTTP Header 에 USER-ID 지정",
-        }
+        "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"}
     }
 
     swag["definitions"] = _swagger_definition
@@ -50,4 +40,3 @@ def swagger_definition(class_):
 
 
 from app.serializers import *  # noqa
-from app.core.request_objects.auth import *  # noqa

@@ -3,6 +3,6 @@ import pytest
 from app import create_app
 
 
-@pytest.yield_fixture(scope='function')
+@pytest.yield_fixture(scope="function")
 def app():
-    return create_app('testing')
+    return create_app("testing")

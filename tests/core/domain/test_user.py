@@ -1,4 +1,4 @@
-from app.core.domain import User
+from app.core.domain.user import User
 
 
 def test_user_model_init():
