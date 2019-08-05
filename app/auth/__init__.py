@@ -9,6 +9,33 @@ auth = Blueprint("auth", __name__)
 
 @auth.route("/token", methods=["POST"])
 def access_token():
+    """
+    jwt token 발급
+    ---
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: email
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+            password:
+              type: string
+    tags:
+      - Auth
+    responses:
+      200:
+        description: OK
+        schema:
+          type: object
+          properties:
+            access_token:
+              type: string
+    """
     email = request.json.get("email")
     password = request.json.get("password")
 
@@ -25,5 +52,11 @@ def access_token():
 @auth.route("/validate-token", methods=["GET"])
 @jwt_required
 def validate_token():
+    """
+    token 검증
+    ---
+    security:
+      - Bearer: []
+    """
     user_id = get_jwt_identity()
     return jsonify({"user_id": user_id})
